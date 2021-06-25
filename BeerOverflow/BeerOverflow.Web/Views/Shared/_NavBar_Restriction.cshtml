@@ -1,0 +1,81 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager﻿
+<!-- Country -->
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="dropdown">
+        <button type="button" class="btn btn-light" data-toggle="dropdown">
+            Country
+        </button>
+        <div class="dropdown-menu">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="Create">Create country</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Country" asp-action="List">View all countries</a>
+        </div>
+    </div>
+}
+
+else
+{
+    <a class="btn btn-light" asp-area="" asp-controller="Country" asp-action="List">Country</a>
+}
+
+<!-- Style -->
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="dropdown">
+        <button type="button" class="btn btn-light" data-toggle="dropdown">
+            Style
+        </button>
+        <div class="dropdown-menu">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Style" asp-action="Create">Create style</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Style" asp-action="List">View all styles</a>
+        </div>
+    </div>
+}
+
+else
+{
+    <a class="btn btn-light" asp-area="" asp-controller="Style" asp-action="List">Style</a>
+}
+
+<!-- Brewery -->
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="dropdown">
+        <button type="button" class="btn btn-light" data-toggle="dropdown">
+            Brewery
+        </button>
+        <div class="dropdown-menu">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Brewery" asp-action="Create">Create brewery</a>
+            <a class="nav-link text-dark" asp-area="" asp-controller="Brewery" asp-action="List">View all breweries</a>
+        </div>
+    </div>
+}
+
+else
+{
+    <a class="btn btn-light" asp-area="" asp-controller="Brewery" asp-action="List">Brewery</a>
+}
+
+<!-- Beer -->
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="dropdown">
+        <button type="button" class="btn btn-light" data-toggle="dropdown">
+            Beer
+        </button>
+        <div class="dropdown-menu">
+            <a class="nav-link text-dark" asp-controller="Beer" asp-action="Create">Create beer</a>
+            <a class="nav-link text-dark" asp-controller="Beer" asp-action="List">View all beers</a>
+            <a class="nav-link text-dark" asp-controller="WishList" asp-action="GetUserWishList">My WishList</a>
+            <a class="nav-link text-dark" asp-controller="DrankList" asp-action="GetUserDrankList">My DrankList</a>
+        </div>
+    </div>
+}
+
+else
+{
+    <a class="btn btn-light" asp-area="" asp-controller="Beer" asp-action="List">Beer</a>
+
+}

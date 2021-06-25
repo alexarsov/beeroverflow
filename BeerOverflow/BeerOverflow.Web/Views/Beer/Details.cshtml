@@ -1,0 +1,45 @@
+﻿@model BeerOverflow.Web.Models.BeerViewModel
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<div>
+    <h4>Details</h4>
+    <hr />
+    <partial name="_DetailsPage" />
+    <partial name="_Second_Try" model="new ReviewViewModel { BeerId = Model.Id }" />
+    <br />
+    <!-- Comments -->
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    Comments
+                </th>
+                <th>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Comments.Count; i++)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.UserNames[i]);
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => Model.Comments[i]);
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
+<div>
+    @Html.ActionLink("Edit", "Edit", new { Model.Id }) |
+    <a asp-action="List">Back to beers</a>
+</div>
+

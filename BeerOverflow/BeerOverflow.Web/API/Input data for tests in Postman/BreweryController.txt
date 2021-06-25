@@ -1,0 +1,53 @@
+----------------------------------- GetAllBreweries -----------------------------------
+
+GET: api/brewery/
+URL: https://localhost:44352/api/brewery
+
+-------------------------------------- GetBrewery -------------------------------------
+
+GET: api/brewery/ + id
+URL: https://localhost:44352/api/brewery/66DAE4AD-753D-4170-90A7-5D58756B757F
+URL: https://localhost:44352/api/brewery/1AEE9EA3-390A-4582-AC37-7A6020EC1553
+URL: https://localhost:44352/api/brewery/52547555-ABB7-425A-9818-7EADF0D90E8B
+
+------------------------------------- CreateBrewery -----------------------------------
+
+POST: api/brewery/[FromBody]
+URL: https://localhost:44352/api/brewery
+
+{
+	"Name" : "Tree House Brewing Co.",
+	"CountryId" : "29473585-5E82-4CFC-844E-0C371A6690D6"
+}
+
+{
+	"Name" : "Flying Dog",
+	"CountryId" : "0BAB8F8F-0400-4573-9DDC-35850D47CB94"
+}
+
+------------------------------------- UpdateBrewery -----------------------------------
+
+POST: api/brewery/id 
+
+URL: https://localhost:44352/api/brewery/66DAE4AD-753D-4170-90A7-5D58756B757F
+URL: https://localhost:44352/api/brewery/52547555-ABB7-425A-9818-7EADF0D90E8B
+
+[FromBody]
+
+{
+	"Name" : "Smuttynose",
+	"CountryId" : "0BAB8F8F-0400-4573-9DDC-35850D47CB94"
+}
+
+{
+	"Name" : "Goose Island",
+	"CountryId" : "29473585-5E82-4CFC-844E-0C371A6690D6"
+}
+
+------------------------------------- DeleteBrewery -----------------------------------
+
+DELETE api/brewery/ + id
+URL: https://localhost:44352/api/brewery/52547555-ABB7-425A-9818-7EADF0D90E8B
+URL: https://localhost:44352/api/brewery/1AEE9EA3-390A-4582-AC37-7A6020EC1553
+
+----------------------------------------------------------------------------------------

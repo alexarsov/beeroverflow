@@ -1,0 +1,48 @@
+﻿@model BeerOverflow.Web.Models.BeerViewModel
+
+    <h4>
+        Please enter new data for @Model.Name beer
+    </h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>         
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <div class="form-group">
+                    <label asp-for="StyleId" class="control-label">Choose a beer style</label>
+                    <select asp-for="StyleId" class="form-control" asp-items="ViewBag.StyleId"></select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="CountryId" class="control-label">Choose a country</label>
+                <select asp-for="CountryId" class="form-control" asp-items="ViewBag.CountryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="BreweryId" class="control-label">Choose a brewery</label>
+                <select asp-for="BreweryId" class="form-control" asp-items="ViewBag.BreweryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="ABV" class="control-label">Enter the percent alcohol by volume</label>
+                <input asp-for="ABV" class="form-control" />
+                <span asp-validation-for="ABV" class="text-danger"></span>
+            </div>       
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="List">Back to beers</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

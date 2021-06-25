@@ -1,0 +1,117 @@
+----------------------------------- GetAllBeers -----------------------------------
+
+GET: api/beer/
+URL: https://localhost:44352/api/beer
+
+----------------------------------- GetBeerById -----------------------------------
+
+GET: api/beer/ + id
+URL: https://localhost:44352/api/beer/6F6BD8B0-A68E-4409-BCDA-15DBE334A26D
+URL: https://localhost:44352/api/beer/E23347C0-3A21-4F50-9D5C-C46253EE0715
+URL: https://localhost:44352/api/beer/3EFD593F-C900-4B05-80DC-E580A07BB7D2
+
+------------------------------ FilterBeersByCountryId -----------------------------
+
+GET: api/beer/ + countryId
+URL: https://localhost:44352/api/beer/country/29473585-5E82-4CFC-844E-0C371A6690D6
+URL: https://localhost:44352/api/beer/country/0e03d656-60cc-476b-9c4a-e12d771dbd62
+URL: https://localhost:44352/api/beer/country/0bab8f8f-0400-4573-9ddc-35850d47cb94
+
+------------------------------ FilterBeersByBreweryId -----------------------------
+
+GET: api/beer/ + breweryId
+URL: https://localhost:44352/api/beer/brewery/66DAE4AD-753D-4170-90A7-5D58756B757F
+URL: https://localhost:44352/api/beer/brewery/1AEE9EA3-390A-4582-AC37-7A6020EC1553
+URL: https://localhost:44352/api/beer/brewery/52547555-ABB7-425A-9818-7EADF0D90E8B
+
+------------------------------- FilterBeersByStyleId ------------------------------
+
+GET: api/beer/ + styleId
+URL: https://localhost:44352/api/beer/style/66DAE4AD-753D-4170-90A7-5D58756B757F
+URL: https://localhost:44352/api/beer/style/1AEE9EA3-390A-4582-AC37-7A6020EC1553
+URL: https://localhost:44352/api/beer/style/52547555-ABB7-425A-9818-7EADF0D90E8B
+
+--------------------------------------- Sorts -------------------------------------
+
+GET: api/beer/sort/byName 
+GET: api/beer/sort/byName 
+GET: api/beer/sort/byName 
+
+------------------------------------- CreateBeer ----------------------------------
+
+POST api/beer/[FromBody]
+URL: https://localhost:44352/api/beer
+
+	{
+	"name" : "Gornobansko",
+	"styleId" : "0DB937EA-3513-4CE7-B3F6-80AE7474BEF2",
+	"countryId" : "0BAB8F8F-0400-4573-9DDC-35850D47CB94",
+	"breweryId" : "66DAE4AD-753D-4170-90A7-5D58756B757F",
+	"rating" : "5",
+	"abv" : "4.5"
+}
+
+{
+	"name" : "Slivensko",
+	"styleId" : "20D79115-03E0-4123-8994-B0F2CEB45CA8",
+	"countryId" : "29473585-5E82-4CFC-844E-0C371A6690D6",
+	"breweryId" : "1AEE9EA3-390A-4582-AC37-7A6020EC1553",
+	"rating" : "5",
+	"abv" : "8.9"
+}
+
+------------------------------------- UpdateBeer ----------------------------------
+
+PUT api/beer/ + Id 
+URL: https://localhost:44352/api/beer/E23347C0-3A21-4F50-9D5C-C46253EE0715
+URL: https://localhost:44352/api/beer/6F6BD8B0-A68E-4409-BCDA-15DBE334A26D
+URL: https://localhost:44352/api/beer/3EFD593F-C900-4B05-80DC-E580A07BB7D2
+
+[FromBody]
+
+{
+	"name" : "Sisharpsko",
+	"styleId" : "0DB937EA-3513-4CE7-B3F6-80AE7474BEF2",
+	"countryId" : "0BAB8F8F-0400-4573-9DDC-35850D47CB94",
+	"breweryId" : "1AEE9EA3-390A-4582-AC37-7A6020EC1553",
+	"rating" : "2.9", 
+	"abv" : "4.0"
+}
+
+{
+	"name" : "Javarsko",
+	"styleId" : "20D79115-03E0-4123-8994-B0F2CEB45CA8",
+	"countryId" : "0BAB8F8F-0400-4573-9DDC-35850D47CB94",
+	"breweryId" : "1AEE9EA3-390A-4582-AC37-7A6020EC1553",
+	"rating" : "4.4", 
+	"abv" : "4.8"
+}
+
+---------------------------------- UpdateBeerRate ---------------------------------
+
+PUT api/beer/rate/ 
+URL: https://localhost:44352/api/beer/rate/
+
+[FromBody]
+
+{
+	"UserId": "1D195E6D-80CF-47EB-A840-2DDEB11734C9",
+	"BeerId": "6F6BD8B0-A68E-4409-BCDA-15DBE334A26D",
+	"RatingValue": 5
+}
+
+{
+	"UserId": "469690A1-0DA5-413D-B82F-F9EC5D96502D",
+	"BeerId": "E23347C0-3A21-4F50-9D5C-C46253EE0715",
+	"RatingValue": 3
+}
+
+---------------------------------- DeleteBeer ---------------------------------
+
+DELETE api/beer/ + id
+URL: https://localhost:44352/api/beer/3EFD593F-C900-4B05-80DC-E580A07BB7D2
+URL: https://localhost:44352/api/beer/E23347C0-3A21-4F50-9D5C-C46253EE0715
+URL: https://localhost:44352/api/beer/6F6BD8B0-A68E-4409-BCDA-15DBE334A26D
+
+-------------------------------------------------------------------------------
+

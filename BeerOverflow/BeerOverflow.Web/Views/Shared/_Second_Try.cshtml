@@ -1,0 +1,319 @@
+﻿<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+@model ReviewViewModel
+<style>
+    .rating {
+        position: relative;
+        top: 50%;
+        left: 160%;
+        transform: translate(-50%,-50%);
+        display: flex;
+        margin-top: 20px;
+    }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            display: block;
+            cursor: pointer;
+            width: 70px;
+        }
+
+            .rating label:before {
+                font-family: fontAwesome;
+                content: '\f005';
+                position: relative;
+                display: block;
+                color: gray;
+            }
+
+            .rating label:after {
+                font-family: fontAwesome;
+                content: '\f005';
+                position: absolute;
+                display: block;
+                color: gold;
+                top: 0;
+                opacity: 0;
+                transition: .5s;
+                text-shadow: 0 2px 5px rgba(0,0,0,.5);
+            }
+
+            .rating label:hover:after,
+            .rating input:checked ~ label:after {
+                opacity: 1;
+            }
+
+    .fa-star {
+        position: relative;
+        left: 25px;
+    }
+
+    #ratingstarslabel {
+        font-weight: 500;
+        margin-left: 80px;
+    }
+
+    #ratingCount {
+        margin-left: 25px;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .contact-h {
+        font-size: 24px;
+        text-transform: uppercase;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .contact .form-group {
+        margin-bottom: 40px;
+    }
+
+    .contact .form-control {
+        border-radius: 0;
+        border: none;
+        border-bottom: 1px solid #00BCD4;
+        box-shadow: none;
+    }
+
+    .contact .btn-primary {
+        background-color: #EC407A;
+        border-color: #EC407A;
+        border-radius: 0;
+        text-transform: uppercase;
+        font-weight: bold;
+    }
+
+    .contact .btn {
+        padding: 12px 15px;
+    }
+
+    .group {
+        position: relative;
+        margin-bottom: 45px;
+    }
+
+    input:focus {
+        outline: none;
+    }
+
+    label {
+        color: #999;
+        font-size: 18px;
+        font-weight: bolder;
+        left: 5px;
+        top: 0;
+        transition: 0.4s ease all;
+        -moz-transition: 0.4s ease all;
+        -webkit-transition: 0.4s ease all;
+    }
+
+
+    input:focus ~ label, input:valid ~ label {
+        top: -20px;
+        font-size: 30px;
+    }
+
+    .bar {
+        position: relative;
+        display: block;
+        width: 100%;
+    }
+
+        .bar:before, .bar:after {
+            content: '';
+            height: 2px;
+            width: 0;
+            bottom: 0px;
+            position: absolute;
+            background: #96c93d;
+            transition: 0.4s ease all;
+            -moz-transition: 0.4s ease all;
+            -webkit-transition: 0.4s ease all;
+        }
+
+        .bar:before {
+            left: 50%;
+        }
+
+        .bar:after {
+            right: 50%;
+        }
+
+
+    input:focus ~ .bar:before, input:focus ~ .bar:after {
+        width: 50%;
+    }
+
+    .highlight {
+        position: absolute;
+        /* height:60%; */
+        width: 100px;
+        top: 25%;
+        left: 0;
+        opacity: 0.5;
+    }
+
+    /* active state */
+    input:focus ~ .highlight {
+        -webkit-animation: inputHighlighter 0.3s ease;
+        -moz-animation: inputHighlighter 0.3s ease;
+        animation: inputHighlighter 0.3s ease;
+    }
+
+    /* ANIMATIONS ================ */
+    @@-webkit-keyframes inputHighlighter {
+        from {
+            background: #5264AE;
+        }
+
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+
+    @@-moz-keyframes inputHighlighter {
+        from {
+            background: #5264AE;
+        }
+
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+
+    @@keyframes inputHighlighter {
+        from {
+            background: #5264AE;
+        }
+
+        to {
+            width: 0;
+            background: transparent;
+        }
+    }
+
+    .text-group textarea {
+        display: block;
+        background: none;
+        padding: 0.125rem 0.125rem 0.0625rem;
+        border-width: 0;
+        border-color: #ffc107;
+        line-height: 0.8;
+        width: 100%;
+        -webkit-transition: all 0.28s ease;
+        transition: all 0.28s ease;
+        box-shadow: none;
+    }
+
+        .text-group textarea:focus ~ .input-label,
+        .text-group textarea:valid ~ .input-label,
+        .text-group textarea.form-file ~ .input-label,
+        .text-group textarea.has-value ~ .input-label {
+            font-size: 14px;
+            ;
+            color: gray;
+            top: -1rem;
+            left: 0;
+        }
+
+        .text-group textarea:focus ~ .input-label {
+            color: #96c93d;
+        }
+
+        .text-group textarea:focus ~ .bar::before {
+            width: 100%;
+            left: 0;
+        }
+
+    .text-group {
+        position: relative;
+        margin-top: 2.25rem;
+        margin-bottom: 4.25rem;
+    }
+
+    .col-md-4 {
+        flex: 0 0 33.333333%;
+    }
+
+    .form-area {
+        border-image-width;
+    }
+
+    #review {
+        margin: auto;
+        display: block;
+    }
+</style>
+
+<div class="container">
+    <div class="contact">
+        <div class="col-md-12 col-md-offset-3">
+            <div class="form-area col-md-12">
+                <div class="text-center contact-h">Write a Review</div>
+                <form asp-controller="Review" asp-action="AddReview">
+                    <header class='header text-center'>
+                        <h2>Rate your favourite beer</h2>
+
+                        <p>
+                            BeerOverflow is a portal, review, and social network for all things beer. Its mission is to provide independent <br />
+                            information about beer and breweries for beer hobbyists and regular folk alike.
+                        </p>
+                    </header>
+                    <section class=''>
+                        <div class="form-group">
+                            <div class="row">
+                                <input name="BeerId" type="hidden" value="@Model.BeerId" />
+                                <div class="form-group ">
+                                    <fieldset>
+                                        <span class="rating">
+                                            <input type="radio" id="rating-5" name="Rating" value="5" /><label for="rating-5"></label>
+                                            <input type="radio" id="rating-4" name="Rating" value="4" /><label for="rating-4"></label>
+                                            <input type="radio" id="rating-3" name="Rating" value="3" /><label for="rating-3"></label>
+                                            <input type="radio" id="rating-2" name="Rating" value="2" /><label for="rating-2"></label>
+                                            <input type="radio" id="rating-1" name="Rating" value="1" checked="checked" /><label for="rating-1"></label>
+                                        </span>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group group col-md-12">
+                            <div class="text-group">
+                                <input type="hidden" value="@Model.BeerId" name="BeerId" />
+                                <textarea required="required" name="Comment" class="form-control" rows="6"></textarea>
+                                <label for="textarea" class="input-label">Before you write, make sure you know the general message you want to convey. A simple thesis will help keep your review from straying off-topic. </label><i class="bar"></i>
+                            </div>
+                        </div>
+
+
+
+                        <partial name="_Come_On_Like_" />
+                        <!--  <i class="fa fa-thumbs-up fa-lg" title="Like" type="checkbox" asp-for="Like" aria-hidden="true"></i>
+                         <input class="fa fa-thumbs-up fa-lg" title="Like" type="checkbox" asp-for="Like" aria-hidden="true" />
+                        <i class="fa fa-thumbs-up fa-lg" title="Like" type="checkbox" asp-for="Like" aria-hidden="true"></i> -->
+
+                        <button class="btn btn-warning col-md-4" type="submit" id="review">Submit a review</button>
+
+                    </section>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

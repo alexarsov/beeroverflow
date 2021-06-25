@@ -1,0 +1,101 @@
+﻿@model BeerOverflow.Web.Models.BeerViewModel
+
+<div class="container">
+    <!--  image left  -->
+    <div class="row">
+        <div class="col-md-5">
+
+            <img src="~/gif/dancetuborg.gif" alt="" class="h-75" />
+        </div>
+        <!-- /.col-md-6 -->
+        <div class="col-md-6">
+
+            <div class="row align-items-start h-100">
+                <div class="align-content-lg-center">
+                    <dl class="row">
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.Name)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.Name)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.StyleName)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.StyleName)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.CountryName)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.CountryName)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.BreweryName)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.BreweryName)
+                        </dd>
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.ABV)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.ABV)
+                        </dd>
+
+                        @if (Model.Rating == 0)
+                        {
+                            <dt class="col-sm-3">
+                                Rating
+                            </dt>
+                            <dd class="col-sm-7">
+                                Not Rated
+                            </dd>
+                        }
+                        else
+                        {
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Rating)
+                            </dt>
+                            <dd class="col-sm-7">
+                                @Html.DisplayFor(model => model.Rating)
+                            </dd>
+                        }
+                        @if (Model.Likes == 0)
+                        {
+                            <dt class="col-sm-3">
+                                Likes
+                            </dt>
+                            <dd class="col-sm-7">
+                                Be the first to like
+                            </dd>
+                        }
+                        else
+                        {
+                            <dt class="col-sm-3">
+                                @Html.DisplayNameFor(model => model.Likes)
+                            </dt>
+                            <dd class="col-sm-7">
+                                @Html.DisplayFor(model => model.Likes)
+                            </dd>
+                        }
+                        <dt class="col-sm-3">
+                            @Html.DisplayNameFor(model => model.CreatedOn)
+                        </dt>
+                        <dd class="col-sm-7">
+                            @Html.DisplayFor(model => model.CreatedOn)
+                        </dd>
+                    </dl>
+                    <br />
+                    <a class="btn btn-warning" asp-area="" asp-controller="WishList" asp-action="AddBeerToWishList" asp-route-beerId="@Model.Id">Add to wishlist</a>
+                    <a class="btn btn-warning" asp-area="" asp-controller="DrankList" asp-action="AddBeerToDrankList" asp-route-beerId="@Model.Id">Add to dranklist</a>
+                </div>
+            </div>
+
+        </div>
+        <!-- /.col-md-6 -->
+
+    </div>
+</div>
+

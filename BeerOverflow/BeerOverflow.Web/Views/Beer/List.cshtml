@@ -1,0 +1,113 @@
+﻿@model X.PagedList.IPagedList<BeerOverflow.Web.Models.BeerViewModel>
+@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager﻿
+@using Microsoft.AspNetCore.Identity
+@using X.PagedList.Mvc.Core
+
+<link href="~/css/PagedList.css" rel="stylesheet" type="text/css" />
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<script src="~/js/Filter.js"></script>
+
+@{
+    ViewBag.Title = "Beers";
+}
+
+<h2>Beers</h2>
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <p>
+        <a asp-action="Create">Create a new beer</a>
+    </p>
+}
+
+@using (Html.BeginForm("List", "Beer", FormMethod.Get))
+{
+    <p>
+        <input class="form-control" id="myInput" type="text" placeholder="Search..">
+    </p>
+}
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.ActionLink("Name", "List", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Style", "List", new { sortOrder = ViewBag.StyleSortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Country", "List", new { sortOrder = ViewBag.CountrySortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Brewery", "List", new { sortOrder = ViewBag.BrewerySortParm })
+            </th>
+            <th>
+                @Html.ActionLink("Alcohol %", "List", new { sortOrder = ViewBag.AlcoholSortParm })
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StyleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BreweryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ABV)
+                </td>
+
+                @if (User.IsInRole("Member"))
+                {
+                    <td>
+                        <a asp-controller="Beer" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Beer" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                }
+
+                else if (User.IsInRole("Admin"))
+                {
+                    <td>
+                        <a asp-controller="Beer" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Beer" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                    <td>
+                        <a asp-controller="Beer" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                }
+
+                else
+                {
+                    <td>
+                        <a asp-controller="Beer" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    </td>
+                }
+            </tr>
+        }
+    </tbody>
+</table>
+<br />
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+    @Html.PagedListPager(Model, page => Url.Action("List",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+    <partial name="_Section" />

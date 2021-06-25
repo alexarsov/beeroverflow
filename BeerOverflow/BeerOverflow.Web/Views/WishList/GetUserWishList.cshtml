@@ -1,0 +1,52 @@
+﻿@model IEnumerable<BeerOverflow.Web.Models.BeerViewModel>
+
+<link href="~/css/PagedList.css" rel="stylesheet" type="text/css" />
+<h3>
+    Your wish list
+</h3>
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>
+                Beer name
+            </th>
+            <th>
+                Beer style
+            </th>
+            <th>
+                Country
+            </th>
+            <th>
+                Brewery
+            </th>
+            <th>
+                Alcohol %
+            </th>
+        </tr>
+    </thead>
+    <tbody id="myTable">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.StyleName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CountryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BreweryName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ABV)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-controller="Beer" asp-action="List">Back to beers</a>
+</div>

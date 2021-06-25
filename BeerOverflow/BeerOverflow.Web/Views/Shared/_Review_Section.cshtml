@@ -1,0 +1,123 @@
+﻿<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+<div class="comment-container">
+    <div class="meta">
+        <img src="https://gravatar.com/avatar/23baf50ab105ff872dc428a75ab49854?s=80&d=https://codepen.io/assets/avatars/user-avatar-80x80-bdcd44a3bfb9a5fd01eb8b86f9e033fa1a9897c3a15b33adfc2649a002dab1b6.png" alt="" class="avatar">
+        <span class="name">Milad Dehghan</span>
+    </div>
+    <textarea class="form-control" name="" id=""></textarea>
+    <span class="placeholder">write a response</span>
+
+    <div class="btns">
+        <a href="#" class="btn btn-default">publish</a>
+    </div>
+    <div class="btns">
+        <a href="#" class="btn btn-default">publish</a>
+    </div>
+</div>
+
+<style>
+    .comment-container {
+        position: relative;
+        max-width: 700px;
+        margin: 50px auto;
+        overflow: hidden;
+        font-family: serif;
+        .meta
+
+    {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        .avatar
+
+    {
+        border-radius: 50%;
+        width: 40px;
+    }
+
+    .name {
+        margin-left: 5px;
+        transform: translateY(-100px);
+        display: inline-block;
+        color: #2d69eb;
+        transition: all 0.3s;
+    }
+
+    }
+
+    .placeholder {
+        position: absolute;
+        top: 50%;
+        font-size: 18px;
+        color: #999999;
+        left: 60px;
+        margin-top: -15px;
+    }
+
+    textarea {
+        height: 70px;
+        transition: all 0.3s;
+        font-size: 18px;
+        box-sizing: border-box;
+        color: #ffffff;
+    }
+
+    .btns {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s;
+    }
+
+    &.toggled {
+        .meta
+
+    {
+        .name
+
+    {
+        transform: translateY(0);
+    }
+
+    }
+
+    textarea {
+        height: 200px;
+        color: #444;
+        padding-top: 60px;
+        padding-bottom: 40px;
+    }
+
+    .placeholder {
+        display: none;
+    }
+
+    .btns {
+        opacity: 1;
+        visibility: visible;
+    }
+  }
+}
+
+</style>
+
+<script>
+    $('.comment-container').click(function() {
+  $(this).addClass('toggled');
+  
+  $(document).click(function(){
+    $('.comment-container').removeClass('toggled');
+  });
+
+  $('.comment-container').click(function(e){
+    e.stopPropagation();
+  });
+  
+  $(this).find('textarea').focus();
+
+})
+</script>

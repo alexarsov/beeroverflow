@@ -1,0 +1,42 @@
+------------------------------------- GetAllStyles -----------------------------------
+
+GET: api/country/
+URL: https://localhost:44352/api/country
+
+--------------------------------------- GetStyle -------------------------------------
+
+GET: api/country/ + id
+URL: https://localhost:44352/api/country/0BAB8F8F-0400-4573-9DDC-35850D47CB94
+URL: https://localhost:44352/api/country/1AEE9EA3-390A-4582-AC37-7A6020EC1553
+URL: https://localhost:44352/api/country/0e03d656-60cc-476b-9c4a-e12d771dbd62
+
+-------------------------------------- CreateStyle -----------------------------------
+
+POST: api/style/[FromBody]
+URL: https://localhost:44352/api/style
+
+"Amber"
+
+"Blonde"
+
+"Brown"
+
+--------------------------------------- UpdateStyle ----------------------------------
+
+POST: api/style/id
+URL: https://localhost:44352/api/style/0E679A3C-5555-4A27-B0FA-594FBA01ED68
+URL: https://localhost:44352/api/style/20D79115-03E0-4123-8994-B0F2CEB45CA8
+
+[FromBody]
+
+"Dark"
+
+"Strong"
+
+------------------------------------- DeleteStyle -----------------------------------
+
+DELETE api/style/id
+URL: https://localhost:44352/api/style/0E679A3C-5555-4A27-B0FA-594FBA01ED68
+URL: https://localhost:44352/api/style/20D79115-03E0-4123-8994-B0F2CEB45CA8
+
+----------------------------------------------------------------------------------------
